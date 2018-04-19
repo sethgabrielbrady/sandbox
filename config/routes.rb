@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/gear_test', to:'gear_test#index'
   get 'home/index'
 
   root to: 'home#index'
