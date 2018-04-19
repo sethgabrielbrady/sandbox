@@ -1,9 +1,7 @@
 
-
-
 <!-- <body class="crt crt_container"> -->
 <header>Gear Test</header>
-<img src='sandbox/app/assets/images/basic_enemy.gif' width="40px;" onclick="battle()">
+<img src='http://sethgabrielbrady.com/gear/basic_enemy.gif' width="40px;" onclick="battle()">
   <div class="battle_grid_layer_1">
     <div class="battle_grid_layer_0">
       <div id="enemy_grid" class="grid_wrapper"></div>
@@ -15,15 +13,13 @@
 
 
 <script>
-
-
 let player_grid = document.getElementById('player_grid');
 let enemy_grid = document.getElementById('enemy_grid');
 let player1 = document.getElementById('player1');
 let enemy1 = document.getElementById('enemy1');
 let info = document.getElementById('info');
-let playerUP = 'assets/images/keeperfr.png';
-let playerDOWN = 'assets/images/keeperba.png';
+let playerUP = 'http://sethgabrielbrady.com/gear/Idle.gif';
+let playerDOWN = 'http://sethgabrielbrady.com/gear/Idle.gif';
 let currentPLimg = playerUP;
 
 let node;
@@ -61,7 +57,7 @@ function battle() {
   //randomly positions an enemy
   let startPls1pos = getRandomInt(48);
   let drawPls1Pos = document.getElementById('pnode'.concat(startPls1pos));
-  drawPls1Pos.innerHTML = "<img src='assets/images/idle.gif' class='e1_size'>";
+  drawPls1Pos.innerHTML = "<img src='http://sethgabrielbrady.com/gear/Idle.gif' class='e1_size'>";
   let currentPl1Pos = startPls1pos;
 
   let drawENPos;
@@ -69,7 +65,7 @@ function battle() {
   for (i=1; i <= enemyCount; i++){
     let startENpos = getRandomInt(48);
     drawENPos = document.getElementById('enode'.concat(startENpos));
-    drawENPos.innerHTML = "<img src='assets/images/ALOElite.png' class='e1_size'>";
+    drawENPos.innerHTML = "<img src='http://sethgabrielbrady.com/gear/ALOBasic.png' class='e1_size'>";
   }
 
 
@@ -100,7 +96,7 @@ function battle() {
       drawPl1Pos.innerHTML = "";
       drawPl1Pos = document.getElementById('pnode'.concat(currentPl1Pos));
       info.innerHTML = 'pnode'.concat(currentPl1Pos);
-      drawPl1Pos.innerHTML = "<img src='assets/images/idle.gif' class='e1_size'>";
+      drawPl1Pos.innerHTML = "<img src='http://sethgabrielbrady.com/gear/Idle.gif' class='e1_size'>";
 
     }else {
       currentPl1Pos = oldPl1Pos;
