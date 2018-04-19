@@ -13,22 +13,21 @@
 
 
 <script>
-let player_grid = document.getElementById('player_grid');
-let enemy_grid = document.getElementById('enemy_grid');
-let player1 = document.getElementById('player1');
-let enemy1 = document.getElementById('enemy1');
-let info = document.getElementById('info');
-let playerUP = 'http://sethgabrielbrady.com/gear/Idle.gif';
-let playerDOWN = 'http://sethgabrielbrady.com/gear/Idle.gif';
-let currentPLimg = playerUP;
+var player_grid = document.getElementById('player_grid');
+var enemy_grid = document.getElementById('enemy_grid');
+var player1 = document.getElementById('player1');
+var enemy1 = document.getElementById('enemy1');
+var info = document.getElementById('info');
+var playerUP = 'http://sethgabrielbrady.com/gear/Idle.gif';
+var playerDOWN = 'http://sethgabrielbrady.com/gear/Idle.gif';
+var currentPLimg = playerUP;
 
-let node;
-let nodeCount = 12;
-let rowCount = 4;
-let gridsEach = nodeCount * rowCount;
-let refresh = 60;
-let enemyCount = 5;
-
+var node;
+var nodeCount = 12;
+var rowCount = 4;
+var gridsEach = nodeCount * rowCount;
+var refresh = 60;
+var enemyCount = 5;
 
 player_grid.setAttribute("style","grid-template-columns:repeat(" +nodeCount+ ", 1fr);");
 enemy_grid.setAttribute("style","grid-template-columns:repeat(" +nodeCount+ ", 1fr);");
@@ -39,9 +38,9 @@ function getRandomInt(max) {
 
 //draws the  battle grid
 for (i=1; i <= nodeCount *4; i++){
-  let pDivNode = "pnode".concat(i);
-  let enNodeID = (gridsEach - i) + 1;
-  let enDivNode = "enode".concat(enNodeID);
+  var pDivNode = "pnode".concat(i);
+  var enNodeID = (gridsEach - i) + 1;
+  var enDivNode = "enode".concat(enNodeID);
   player_grid.innerHTML += "<div class='player_grid' id="+pDivNode+">PG"+i+"</div>";
   enemy_grid.innerHTML += "<div class='enemy_grid' id="+enDivNode+">EG"+enNodeID+"</div>";
 }
@@ -55,15 +54,15 @@ function battle() {
   },refresh);
 
   //randomly positions an enemy
-  let startPls1pos = getRandomInt(48);
-  let drawPls1Pos = document.getElementById('pnode'.concat(startPls1pos));
+  var startPls1pos = getRandomInt(48);
+  var drawPls1Pos = document.getElementById('pnode'.concat(startPls1pos));
   drawPls1Pos.innerHTML = "<img src='http://sethgabrielbrady.com/gear/Idle.gif' class='e1_size'>";
-  let currentPl1Pos = startPls1pos;
+  var currentPl1Pos = startPls1pos;
 
-  let drawENPos;
+  var drawENPos;
 
   for (i=1; i <= enemyCount; i++){
-    let startENpos = getRandomInt(48);
+    var startENpos = getRandomInt(48);
     drawENPos = document.getElementById('enode'.concat(startENpos));
     drawENPos.innerHTML = "<img src='http://sethgabrielbrady.com/gear/ALOBasic.png' class='e1_size'>";
   }
@@ -72,7 +71,7 @@ function battle() {
 //This will be for controlling the character but using enemy as test for now. Need to seperate it out
 // and call the function inside
   function keyDownHandler(e) {
-    let oldPl1Pos = currentPl1Pos;
+    var oldPl1Pos = currentPl1Pos;
     if(e.keyCode == 39) {
       rightPressed = true;
       currentPl1Pos = currentPl1Pos + 1;
