@@ -1,3 +1,105 @@
-// Place all the styles related to the gear_test controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  background-color:white;
+}
+
+.battle_grid_layer_1{
+ /* transform: skewY(1deg); */
+}
+
+.battle_grid_layer_0{
+ transform: skewX(-45deg);
+}
+
+.grid_wrapper {
+  position:relative;
+  top: 20vh;
+  left:30vw;
+  width:max-content;
+  display: grid;
+}
+
+.player_grid {
+  color:white;
+  width:70px;
+  height:50px;
+  border:1px solid #d4d0d0;
+}
+.player_grid:hover {
+  color:#fff;
+  background-color:rgba(66, 204, 175, 0.91);
+}
+
+.enemy_grid {
+  color:white;
+  width:70px;
+  height:50px;
+  border:1px solid #d4d0d0;
+}
+
+.enemy_grid:hover {
+  color:#fff;
+  background-color:rgba(208, 20, 87, 0.9);
+}
+
+.e1_size {
+  transform: skewX(45deg);
+  position:relative;
+  top:-74px;
+  left:-61px;
+  width:140%;
+  height:240%;
+}
+
+.crt_container{
+    height:100vh;
+  }
+
+  .crt {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .crt::after {
+    height:100%;
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .crt::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+  }
+
+  .blinking-cursor {
+    font-weight: 100;
+    font-size: 1em;
+    -webkit-animation: 1s blink step-end infinite;
+    -moz-animation: 1s blink step-end infinite;
+    -ms-animation: 1s blink step-end infinite;
+    -o-animation: 1s blink step-end infinite;
+    animation: 1s blink step-end infinite;
+    color: white;
+    // text-shadow: -1px 1px 20px rgba(white, 0.50), 1px -1px 20px rgba(grey, 0.60);
+    -webkit-transition: text-shadow 250ms linear 0s;
+    -moz-transition: text-shadow 250ms linear 0s;
+    -o-transition: text-shadow 250ms linear 0s;
+    transition: text-shadow 250ms linear 0s;
+  }
