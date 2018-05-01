@@ -1,0 +1,123 @@
+
+<!-- <body class="crt crt_container"> -->
+<header>Gear Test</header>
+<img src='http://sethgabrielbrady.com/gear/basic_enemy.gif' width="40px;" onclick="battle()">
+  <div class="battle_grid_layer_1">
+    <div class="battle_grid_layer_0">
+      <div id="enemy_grid" class="grid_wrapper"></div>
+      <br>
+      <div id="player_grid" class="grid_wrapper"></div>
+    </div>
+  </div>
+<div id="info" style="color:white;"></div>
+
+
+<script>
+var player_grid = document.getElementById('player_grid');
+var enemy_grid = document.getElementById('enemy_grid');
+var player1 = document.getElementById('player1');
+var enemy1 = document.getElementById('enemy1');
+var info = document.getElementById('info');
+var playerUP = 'http://sethgabrielbrady.com/gear/Idle.gif';
+var playerDOWN = 'http://sethgabrielbrady.com/gear/Idle.gif';
+var currentPLimg = playerUP;
+
+var node;
+var nodeCount = 12;
+var rowCount = 4;
+var gridsEach = nodeCount * rowCount;
+var refresh = 60;
+var enemyCount = 5;
+
+player_grid.setAttribute("style","grid-template-columns:repeat(" +nodeCount+ ", 1fr);");
+enemy_grid.setAttribute("style","grid-template-columns:repeat(" +nodeCount+ ", 1fr);");
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max)) + 1;
+}
+
+//draws the  battle grid
+for (i=1; i <= nodeCount *4; i++){
+  var pDivNode = "pnode".concat(i);
+  var enNodeID = (gridsEach - i) + 1;
+  var enDivNode = "enode".concat(enNodeID);
+  player_grid.innerHTML += "<div class='player_grid' id="+pDivNode+">PG"+i+"</div>";
+  enemy_grid.innerHTML += "<div class='enemy_grid' id="+enDivNode+">EG"+enNodeID+"</div>";
+}
+
+function battle() {
+  //updates at 60fps
+  setInterval(function(){
+    document.addEventListener("keydown", keyDownHandler, false);
+    document.addEventListener("keyup", keyUpHandler, false);
+
+  },refresh);
+
+  //randomly positions an enemy
+  var startPls1pos = getRandomInt(48);
+  var drawPls1Pos = document.getElementById('pnode'.concat(startPls1pos));
+  drawPls1Pos.innerHTML = "<img src='http://sethgabrielbrady.com/gear/Idle.gif' class='e1_size'>";
+  var currentPl1Pos = startPls1pos;
+
+  var drawENPos;
+
+  for (i=1; i <= enemyCount; i++){
+    var startENpos = getRandomInt(48);
+    drawENPos = document.getElementById('enode'.concat(startENpos));
+    drawENPos.innerHTML = "<img src='http://sethgabrielbrady.com/gear/ALOBasic.png' class='e1_size'>";
+  }
+
+
+//This will be for controlling the character but using enemy as test for now. Need to seperate it out
+// and call the function inside
+  function keyDownHandler(e) {
+    var oldPl1Pos = currentPl1Pos;
+    if(e.keyCode == 39) {
+      rightPressed = true;
+      currentPl1Pos = currentPl1Pos + 1;
+    }
+    else if(e.keyCode == 37) {
+      leftPressed = true;
+      currentPl1Pos = currentPl1Pos - 1;
+    }
+    else if(e.keyCode == 38) {
+      upPressed = true;
+      currentPl1Pos = currentPl1Pos - 12;
+      currentPLimg = playerDOWN;
+    }
+    else if(e.keyCode == 40) {
+      downPressed = true;
+      currentPl1Pos = currentPl1Pos + 12;
+      currentPLimg = playerUP;
+    }
+    if( (currentPl1Pos >= 1) && (currentPl1Pos <= 48)){
+      drawPl1Pos = document.getElementById('pnode'.concat(oldPl1Pos));
+      drawPl1Pos.innerHTML = "";
+      drawPl1Pos = document.getElementById('pnode'.concat(currentPl1Pos));
+      info.innerHTML = 'pnode'.concat(currentPl1Pos);
+      drawPl1Pos.innerHTML = "<img src='http://sethgabrielbrady.com/gear/Idle.gif' class='e1_size'>";
+
+    }else {
+      currentPl1Pos = oldPl1Pos;
+    }
+  }
+
+  function keyUpHandler(e) {
+    if(e.keyCode == 39) {
+      rightPressed = false;
+    }
+    else if(e.keyCode == 37) {
+      leftPressed = false;
+    }
+    else if(e.keyCode == 38) {
+      upPressed = false;
+    }
+    else if(e.keyCode == 40) {
+      downPressed = false;
+    }
+  }
+
+}
+
+
+</script>
